@@ -4,6 +4,8 @@
   "description": "Full Stack -kurssin kolmannen osan tehtävät",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
+    "watch": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/sivosam/Full_Stack_Osa3/issues"
   },
-  "homepage": "https://github.com/sivosam/Full_Stack_Osa3#readme"
+  "homepage": "https://github.com/sivosam/Full_Stack_Osa3#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.6"
+  }
 }
