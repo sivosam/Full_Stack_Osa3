@@ -1,0 +1,19 @@
+{
+  "name": "full_stack_osa3",
+  "version": "1.0.0",
+  "description": "Full Stack -kurssin kolmannen osan tehtävät",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sivosam/Full_Stack_Osa3.git"
+  },
+  "author": "Sampo Sivonen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sivosam/Full_Stack_Osa3/issues"
+  },
+  "homepage": "https://github.com/sivosam/Full_Stack_Osa3#readme"
+}
