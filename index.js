@@ -2,8 +2,13 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
+const morgan = require('morgan')
+const cors = require('cors')
 
 app.use(bodyParser.json())
+app.use(cors())
+app.use(morgan('tiny'))
+app.use(express.static('build'))
 
 let persons = [
     {
@@ -45,6 +50,7 @@ app.get('/info', (req, res) => {
 })
 
 app.get('/api/persons', (req, res) => {
+    morgan('tiny', res)
     res.json(persons)
 })
 
@@ -57,12 +63,14 @@ app.get('/api/persons/:id', (req, res) => {
     } else {
         res.status(404).end()
     }
+    morgan('tiny', res)
 })
 
 app.delete('/api/persons/:id', (req, res) => {
     const id = Number(req.params.id)
     persons = persons.filter(p => p.id !== id)
 
+    morgan('tiny', res)
     res.status(204).end()
 
 })
@@ -71,22 +79,22 @@ app.post('/api/persons', (req, res) => {
     const body = req.body
 
     if (body.name === undefined) {
-        return res.status(400).json({ error: 'Name missing'})
+        return res.status(400).json({ error: 'Name missing' })
     }
     if (body.number === undefined) {
-        return res.status(400).json({ error: 'Number missing'})
+        return res.status(400).json({ error: 'Number missing' })
     }
 
     if (persons.find(p => p.name === body.name)) {
-        return res.status(400).json({ error: 'Name must be unique'})
+        return res.status(400).json({ error: 'Name must be unique' })
     }
 
     const person = {
         name: body.name,
         number: body.number,
-        id: Math.floor(Math.random() * 1000) 
+        id: Math.floor(Math.random() * 1000)
     }
-
+    morgan('tiny', res)
     persons = persons.concat(person)
     res.json(person)
 
